@@ -6,7 +6,7 @@ DATE=$(date +"%y%m%d_%H%M%S")
 PIC_FILE=/home/pi/photolog/images/$DATE.jpg
 VID_FILE=/home/pi/photolog/videos/$DATE.mp4
 
-raspistill -o $PIC_FILE
+raspistill --annotate "$(date)" -w 1944 -h 2592 -o $PIC_FILE
 ffmpeg -loop 1 -i $PIC_FILE -t 0.1 -pix_fmt yuv420p -y $VID_FILE
 
 rm $PIC_FILE
